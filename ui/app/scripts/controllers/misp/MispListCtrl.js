@@ -313,10 +313,18 @@
                 this.filter();
             };
 
+            this.sortBy = function(sort) {
+                self.list.sort = sort;
+                self.list.update();
+                self.filtering.setSort(sort);
+            };
+
             this.getStatuses = function() {
                 return $q.resolve([
                     {text: 'New'},
-                    {text: 'Update'}
+                    {text: 'Update'},
+                    {text: 'Imported'},
+                    {text: 'Ignore'}
                 ]);
             };
 

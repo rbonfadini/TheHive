@@ -25,26 +25,7 @@
                 </ul>
             </div>
 
-            <!-- <div class="btn-group" uib-dropdown>
-                <button class="btn btn-primary dropdown-toggle" uib-dropdown-toggle type="button">
-                    <i class="fa fa-filter"></i>
-                    Quick Filters
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" uib-dropdown-menu>
-                    <li>
-                        <a ng-click="misp.filterMyCases()">My cases</a>
-                    </li>
-                    <li>
-                        <a ng-click="misp.filterByStatus('Open')">Open Cases ({{misp.caseStats.Open.count}})</a>
-                    </li>
-                    <li>
-                        <a ng-click="misp.filterByStatus('Resolved')">Closes Cases ({{misp.caseStats.Resolved.count}})</a>
-                    </li>
-                </ul>
-            </div> -->
-
-            <!-- <div class="btn-group" uib-dropdown>
+            <div class="btn-group" uib-dropdown>
                 <button class="btn btn-primary dropdown-toggle" uib-dropdown-toggle type="button">
                     <i class="fa fa-sort"></i>
                     Sort by
@@ -52,13 +33,19 @@
                 </button>
                 <ul class="dropdown-menu" uib-dropdown-menu>
                     <li>
-                        <a ng-click="misp.sortBy(['-flag', '-startDate'])">Newest first</a>
+                        <a ng-click="misp.sortBy(['-publishDate'])">Newest first</a>
                     </li>
                     <li>
-                        <a ng-click="misp.sortBy(['-flag', '+startDate'])">Oldest first</a>
+                        <a ng-click="misp.sortBy(['+publishDate'])">Oldest first</a>
+                    </li>
+                    <li>
+                        <a ng-click="misp.sortBy(['-threatLevel'])">High Severity first</a>
+                    </li>
+                    <li>
+                        <a ng-click="misp.sortBy(['+threatLevel'])">Low Severity first</a>
                     </li>
                 </ul>
-            </div> -->
+            </div>
 
             <div class="btn-group pull-right" role="group">
                 <page-sizer collection="misp.list" sizes="[10, 15, 30, 100]"></page-sizer>
