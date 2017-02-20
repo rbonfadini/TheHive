@@ -56,7 +56,7 @@
                                 ng-model="misp.filtering.activeFilters.org.value"
                                 placeholder="ex: CIRCL, OSINT"
                                 replace-spaces-with-dashes="false">
-                                    <auto-complete load-on-focus="true" min-length="1" source="misp.getSources($query)"></auto-complete>
+                                    <auto-complete debounceDelay="400" source="misp.getSources($query)"></auto-complete>
                                 </tags-input>
                         </div>
                     </div>

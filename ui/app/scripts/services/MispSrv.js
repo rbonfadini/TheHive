@@ -79,6 +79,29 @@
                     });
 
                     return StatSrv.get(statConfig);
+                },
+
+                sources: function(query) {
+                    var defer = $q.defer();
+
+                    StatSrv.getPromise({
+                        objectType: 'connector/misp',
+                        field: 'org',
+                        limit: 1000
+                    }).then(function(response) {
+                        var sources = [];
+
+                        sources = _.map(_.filter(_.keys(response.data), function(source) {
+                            var regex = new RegExp(query, 'gi');
+                            return regex.test(source);
+                        }), function(source) {
+                            return {text: source};
+                        });
+
+                        defer.resolve(sources);
+                    });
+
+                    return defer.promise;
                 }
             };
 

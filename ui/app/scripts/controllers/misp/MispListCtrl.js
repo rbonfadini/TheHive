@@ -328,9 +328,9 @@
                 ]);
             };
 
-            // this.getTags = function(query) {
-            //     return TagSrv.fromCases(query);
-            // };
+            this.getSources = function(query) {
+                return MispSrv.sources(query);
+            };
 
             self.load();
         });
