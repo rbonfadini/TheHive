@@ -6,12 +6,14 @@
             var baseUrl = './api/connector/misp';
 
             var factory = {
-                list: function(scope, callback) {
+
+                list: function(config, callback) {
                     return PSearchSrv(undefined, 'connector/misp', {
-                        scope: scope,
-                        sort: '-publishDate',
-                        loadAll: false,
-                        pageSize: 10,
+                        scope: config.scope,
+                        sort: config.sort || '-publishDate',
+                        loadAll: config.loadAll || false,
+                        pageSize: config.pageSize || 10,
+                        filter: config.filter || '',
                         onUpdate: callback || angular.noop,
                         streamObjectType: 'misp'
                     });
