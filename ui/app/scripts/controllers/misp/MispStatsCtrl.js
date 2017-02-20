@@ -19,6 +19,7 @@
                 rootId: 'any',
                 query: {},
                 objectType: 'connector/misp',
+                streamObjectType: 'misp',
                 field: 'tags',
                 sort: ['-count'],
                 limit: 5,
@@ -33,6 +34,7 @@
                 rootId: 'any',
                 query: {},
                 objectType: 'connector/misp',
+                streamObjectType: 'misp',
                 field: 'eventStatus',
                 result: {},
                 success: function(data){
@@ -45,6 +47,7 @@
                 rootId: 'any',
                 query: {},
                 objectType: 'connector/misp',
+                streamObjectType: 'misp',
                 field: 'org',
                 sort: ['-count'],
                 limit: 5,
