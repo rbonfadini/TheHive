@@ -37,13 +37,10 @@
                             sort: self.defaults.sort || []
                         };
 
-                        self.filters = self.defaultFilter;
-                        self.activeFilters = {};
-                        self.activeFilters.status = {
-                            value: [{
-                                text: 'Open'
-                            }]
-                        };
+                        self.filters = self.defaultFilter;                        
+                        self.activeFilters = _.mapObject(self.defaultFilter || {}, function(val){
+                            return _.omit(val, 'field', 'filter');
+                        });
 
                         self.storeContext();
                     }

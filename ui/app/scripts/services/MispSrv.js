@@ -49,17 +49,9 @@
 
                 stats: function(scope) {
                     var field = 'eventStatus',
-                        mispStatQuery = {
-                            _not: {
-                                _in: {
-                                    _field: 'eventStatus',
-                                    _values: ['Ignore', 'Imported']
-                                }
-                            }
-                        },
                         result = {},
                         statConfig = {
-                            query: mispStatQuery,
+                            query: {},
                             objectType: 'connector/misp',
                             field: field,
                             result: result,
@@ -99,6 +91,28 @@
                         });
 
                         defer.resolve(sources);
+                    });
+
+                    return defer.promise;
+                },
+
+                statuses: function(query) {
+                    var defer = $q.defer();
+
+                    $q.resolve([
+                        {text: 'New'},
+                        {text: 'Update'},
+                        {text: 'Imported'},
+                        {text: 'Ignore'}
+                    ]).then(function(response) {
+                        var statuses = [];
+
+                        statuses = _.filter(response, function(status) {
+                            var regex = new RegExp(query, 'gi');
+                            return regex.test(status.text);
+                        });
+
+                        defer.resolve(statuses);
                     });
 
                     return defer.promise;

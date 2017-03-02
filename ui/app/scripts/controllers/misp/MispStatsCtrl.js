@@ -5,7 +5,7 @@
     'use strict';
 
     angular.module('theHiveControllers').controller('MispStatsCtrl',
-        function($rootScope, $stateParams, $timeout, StatSrv, StreamStatSrv, FilteringSrv) {
+        function($rootScope, $scope, $stateParams, $timeout, StatSrv, StreamStatSrv, FilteringSrv) {
             var self = this;
 
             this.filtering = FilteringSrv;
@@ -16,6 +16,7 @@
 
             // Get stats by tags
             StreamStatSrv({
+                scope: $scope,
                 rootId: 'any',
                 query: {},
                 objectType: 'connector/misp',
@@ -31,6 +32,7 @@
 
             // Get stats by type
             StreamStatSrv({
+                scope: $scope,
                 rootId: 'any',
                 query: {},
                 objectType: 'connector/misp',
@@ -44,6 +46,7 @@
 
             // Get stats by ioc
             StreamStatSrv({
+                scope: $scope,
                 rootId: 'any',
                 query: {},
                 objectType: 'connector/misp',

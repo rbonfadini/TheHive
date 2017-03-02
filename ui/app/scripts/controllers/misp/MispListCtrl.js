@@ -18,6 +18,18 @@
                     pageSize: 15,
                     sort: ['-publishDate']
                 },
+                defaultFilter: {
+                    eventStatus: {
+                        field: 'eventStatus',
+                        label: 'Status',
+                        value: [{
+                            text: 'New'
+                        }, {
+                            text: 'Update'
+                        }],
+                        filter: '(eventStatus:"New" OR eventStatus:"Update")'
+                    }
+                },
                 filterDefs: {
                     keyword: {
                         field: 'keyword',
@@ -319,13 +331,8 @@
                 self.filtering.setSort(sort);
             };
 
-            this.getStatuses = function() {
-                return $q.resolve([
-                    {text: 'New'},
-                    {text: 'Update'},
-                    {text: 'Imported'},
-                    {text: 'Ignore'}
-                ]);
+            this.getStatuses = function(query) {
+                return MispSrv.statuses(query);                
             };
 
             this.getSources = function(query) {
